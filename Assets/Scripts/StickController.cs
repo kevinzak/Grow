@@ -63,8 +63,10 @@ public class StickController : MonoBehaviour {
 		double y = -1.75 * Mathf.Cos(rotation_rad);
 		double x = 1.75 * Mathf.Sin(rotation_rad);
 
+		float duration = 2.0f;
+		float toScale = 1.5f;
 		isGrowing = true;
-		LeanTween.scaleY (this.gameObject, 1.5f, 2.0f);
+		LeanTween.scaleY (this.gameObject, toScale, duration);
 		LeanTween.moveLocalX (this.gameObject, (float)(x), 2.0f);
 		LeanTween.moveLocalY (this.gameObject, (float)(y), 2.0f);
 	}

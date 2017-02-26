@@ -9,10 +9,16 @@ public class RotationController : MonoBehaviour {
 	public int powerUpEffect = 3; // Note: The higher the power up effect, the slower the rotation
 
 	Vector3 speed = new Vector3(1,1,1);
-
+	float 	toRotationSpeed = - 1;
+	float 	changeSpeedDuration = 5; // duration in seconds
+	float 	t = 0;
 
 	// Use this for initialization
 	void Start () {
+		if (toRotationSpeed == -1) {
+			toRotationSpeed = rotationSpeed;
+		}
+
 		if (increaseSpeedObserver) {
 			NotificationCenter.DefaultCenter.AddObserver (this, EventManager.Increase_Speed, "IncreaseSpeed");
 		}
@@ -22,10 +28,17 @@ public class RotationController : MonoBehaviour {
 		}
 
 		NotificationCenter.DefaultCenter.AddObserver (this, EventManager.Power_Up, "PowerUpActivated");
+		NotificationCenter.DefaultCenter.AddObserver (this, EventManager.Reset_Power_Up, "PowerUpReset");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (rotationSpeed != toRotationSpeed) {
+			t += Time.deltaTime/changeSpeedDuration;
+			rotationSpeed = Mathf.Lerp (rotationSpeed, toRotationSpeed, t);
+		}
+
 		int xRotation = 1;
 		if (clockWise) {
 			xRotation = -1;
@@ -45,7 +58,6 @@ public class RotationController : MonoBehaviour {
 		}
 	}
 
-
 	void PowerUpActivated(){
 		print ("power up activated");
 		for (int i = 0; i < this.powerUpEffect; i++) {
@@ -53,5 +65,20 @@ public class RotationController : MonoBehaviour {
 		}
 	}
 
+	void PowerUpReset() {
+		for (int i = 0; i < this.powerUpEffect; i++) {
+			IncreaseSpeed();
+		}
+	}
+
+
+	public void AnimateSpeedTo(float toSpeed, float duration ){
+		t = 0;
+		toRotationSpeed = toSpeed;
+		changeSpeedDuration = duration;
+		print ("Aniamte call!");
+
+	}
 }
+
 

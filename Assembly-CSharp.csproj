@@ -67,12 +67,16 @@
      <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
      <Compile Include="Assets\Scripts\CentralSphere.cs" />
      <Compile Include="Assets\Scripts\CentralSphereController.cs" />
+     <Compile Include="Assets\Scripts\DeadTreeBranchController.cs" />
+     <Compile Include="Assets\Scripts\DeadTreeController.cs" />
      <Compile Include="Assets\Scripts\EventManager.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\NotificationCenter.cs" />
      <Compile Include="Assets\Scripts\ObstacleController.cs" />
      <Compile Include="Assets\Scripts\ObstacleHolderController.cs" />
+     <Compile Include="Assets\Scripts\ReleaseController.cs" />
      <Compile Include="Assets\Scripts\RotationController.cs" />
+     <Compile Include="Assets\Scripts\SlowMotionBar.cs" />
      <Compile Include="Assets\Scripts\StickController.cs" />
      <Compile Include="Assets\Scripts\StickGenerator.cs" />
      <None Include="Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />
